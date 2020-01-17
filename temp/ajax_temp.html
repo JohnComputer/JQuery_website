@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--  인터넷 익스플로러 엣지  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--  뷰포트 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>IN</title>
+
+	 <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+	<!-- jQuery Plugin -->
+	<script src="js/jquery.min.js"></script>
+  <script src='js/jquery.backTop.min.js'></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Back Top -->
+   <script>
+         $.ajax({
+             url: "car_repair.json",
+             type: 'get',
+             dataType: 'json',
+             success: function(data) {
+                 alert("dd");
+                 console.log(data);
+             },
+             error: function(jqXHR, textStatus, errorThrow){
+                 alert("error");
+             }
+         })
+   </script>
+</head>
+<body>
+<div>
+  <div id="body">
+
+  </div>
+</div>
+</body>
+
+</html>

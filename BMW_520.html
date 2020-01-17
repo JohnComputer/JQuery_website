@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>BMW</title>
+	 <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <!-- 폰트어썸 CSS -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+  <!-- 파비콘 오류 -->
+  <link rel="shortcut icon" href="#">
+
+	<!-- jQuery Plugin -->
+  <script src="js/jquery.min.js"></script>
+  <script src='js/jquery.backTop.min.js'></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- jqPlot 기본 라이브러리 파일 -->
+  <link rel="stylesheet" href="jqplot/jquery.jqplot.min.css"/>
+  <script src="jqplot/jquery.jqplot.min.js"></script>
+
+  <!-- jqplot -->
+  <!-- <script type="text/javascript" src="jqplot/jquery.jqplot.js"></script> -->
+  <script src="jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script src="jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+  <!-- 카카오네비 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <!-- Back Top / ajax -->
+  <script>
+   $(document).ready(function() {
+     $('#backTop').backTop({
+       'position' : 1200,
+       'speed' : 500,
+       'color' : 'orange',
+     });
+   });
+   $.ajax({
+       url: "car_json.json",
+       type: 'get',
+       dataType: 'json',
+       timeout: 1000,
+       success: function(data) {
+
+           eighteen = data.Root.Row[5]["eighteen"];
+           sixteen = data.Root.Row[5]["sixteen"];
+           fourteen = data.Root.Row[5]["fourteen"];
+           twenteen = data.Root.Row[5]["twenteen"];
+           ten = data.Root.Row[5]["ten"];
+           model = data.Root.Row[5]["모델명"];
+           displace = data.Root.Row[5]["배기량"];
+           engine = data.Root.Row[5]["엔진형식"];
+           zero = data.Root.Row[5]["제로백"];
+           maximum = data.Root.Row[5]["최대출력"];
+           fuel = data.Root.Row[5]["연비"];
+
+          $("div#carform").append(
+            "<p>모델 :"+model+"</br>"
+            +"배기량 :"+displace+"</br>"
+            +"엔진형식 :"+engine+"</br>"
+            +"제로백 :"+zero+"</br>"
+            +"최대출력 :"+maximum+"</br>"
+            +"연비 :"+fuel+"</br>"
+            +"</p>");
+
+         var line1 = [[2018, eighteen/100, null], [2016, sixteen/100, null], [2014, fourteen/100,null],
+             [2012, twenteen/100, null ], [2010, ten/100, null]];
+         var plot2 = $.jqplot('chart2', [line1], {
+           title: '중고차 시세 단위 (백만)',
+           seriesDefaults: {
+             showMarker:true,
+             pointLabels:{ show:true, location:'s', ypadding:3 }
+           },
+           axes:{ yaxis:{ pad: 1.3 } }
+         });
+       },
+       error: function(jqXHR, textStatus, errorThrow){
+           alert("error");
+       }
+   });
+  </script>
+  <!-- 카카오 네비 -->
+  <script type='text/javascript'>
+    //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('3f50f7681c18fb212509fc8c75442500');
+      // 카카오 로그인 버튼을 생성합니다.
+      // 아직 임시 개발 단계여서 도메인 등록과 아이디 등록이 되어있진 않아서 사용은 불가능 연결만 가능
+      function navi(){
+          Kakao.Navi.start({
+              name: "코오롱모터스",
+              x: 128.537987,
+              y: 35.871595,
+              coordType: 'wgs84'
+          });
+      }
+    //]]>
+  </script>
+</head>
+
+<body>
+  <!-- /////////////////////////////////////////Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+
+        </button>
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" class="hidden-xs" alt="">
+          <h3 class="visible-xs">INOCAR</h3>
+          <!-- 스마트폰 이면 h3스타일먹힌 INOCAR 로 나옴 -->
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a class="page-scroll" href="index.html">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BENZ<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BENZ_C.html">C class</a></li>
+              <li><a href="BENZ_E.html">E class</a></li>
+              <li><a href="BENZ_S.html">S class</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BMW<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BMW_320.html">3 series</a></li>
+              <li><a href="BMW_520.html">5 series</a></li>
+              <li><a href="BMW_720.html">7 series</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUDI<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="AUDI_A4.html">A4</a></li>
+              <li><a href="AUDI_A6.html">A6</a></li>
+              <li><a href="AUDI_A8.html">A8</a></li>
+            </ul>
+          </li>
+          <li>
+              <a class="page-scroll" href="gallery.html">Gallery</a>
+          </li>
+          <li>
+              <a class="page-scroll" href="Aboutme.html">About me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <header>
+		<div class="container text-center">
+			<a class="site-branding" href="BMW_520.html">
+          <h1 class="site-title">
+            BMW
+          </h1>
+          <p class="site-description">
+            5 series
+          </p>
+			</a><!-- .site-branding -->
+		</div>
+  </header>
+
+  <a id='backTop'>Back to top</a>
+  <section class="box-content box-1 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6 fix-right">
+        <div class="box-image">
+          <img class="media__image " src="images/BMW_900_5_1.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>THE BMW 5 SERIES.</span>
+          </div>
+          <p>뜨거운 감성과 차가운 이성을 태양과 달처럼 빛내며 성공을 향해 질주하는 당신은 BMW 5시리즈입니다.
+            비즈니스와 다이내믹, 어느 면에서나 독보적인 BMW 5시리즈. 모든 모델에 기본 장착된
+            BMW M 스포츠 패키지가 외면과 내면 모두에서 강렬한 다이내믹을 드러내고,
+            가장 앞선 테크놀로지와 유려한 디자인은 이지적인 비즈니스 세단의 품위를 확인시켜줍니다.
+            압도적인 자신감으로 새롭게 탄생한 BMW 5시리즈, 두 얼굴의 다이내믹이 지금 시작됩니다.</p>
+            <div class="heading">
+              <span>사이드 캐릭터 라인.</span>
+            </div>
+            <p>다이내믹한 감성의 캐릭터 라인이 탁월한 주행 성능을 시각적으로 표현합니다.
+            기존 모델에서 하나였던 캐릭터 라인이 정밀한 두 겹으로 변화하면서 더욱 날렵해진
+            외관 디자인을 확인해보십시오. 라인이 BMW 특유의 호프마이스터 킹크와 자연스럽게
+            연결되면서, 이 차량의 탁월한 운동성이 한눈에 느껴집니다.</p>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <!-- ////////////Content Box 02 -->
+  <section class="box-content box-2 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6">
+        <div class="box-image">
+          <img class="media__image " src="images/BMW_900_5_2.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>엑티브 에어 스트림 키드니 그릴</span>
+          </div>
+          <p>BMW 5시리즈에 적용된 액티브 에어 스트림 키드니 그릴에 주목하십시오.
+          상황에 따라 열고 닫히는 키드니 그릴은 한 걸음 더 진보한 BMW의 에어로다이내믹 테크놀로지를
+          상징적으로 보여줍니다. 액티브 에어 스트림 키드니 그릴과 에어브리더, 에어커튼이 유기적으로 작동하여
+          주행 시 공기 저항을 효과적으로 낮추고 높은 효율성과 뛰어난 실내 방음 효과까지 제공합니다.</p>
+            <div class="heading">
+              <span>초경량 차체 구조</span>
+            </div>
+            <p>BMW 5시리즈는 기존 모델보다 차체 무게를 최대 100kg까지 (유럽 기준) 줄였습니다.
+          섬세하고 정밀한 경량 구조 설계 및 경량 소재 사용으로 차체가 더 단단해졌으며
+          민첩성과 효율성이 획기적으로 높아졌습니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <!-- ////////////Content Box 03 -->
+  <section class="box-content box-3 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6 fix-right">
+        <div class="box-image">
+          <img class="media__image " src="images/BMW_900_5_3.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!-- jqplot 들어감  -->
+        <div class="box-text" id="chart2" width="100%" height="590px" frameborder="0" style="border: 0"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <section class="box-content box-4 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6">
+        <div class="box-image">
+          <img class="media__image " src="images/BMW_900_5_4.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>차량 제원</br>CAR specification</span>
+          </div>
+          <div id="carform">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <div class="under">
+    <div class="wrap-footer">
+      <div class="no-gutter">
+        <div class="col-md-4">
+          <div class="box-text">
+            <div class="footer-heading">
+              <h2>Contacts</h2>
+            </div>
+            <p><i class="fa fa-building-o"></i>코오롱모터스</p>
+            <p><i class="fa fa-phone"></i>053-551-3955</p>
+            <p><i class="fa fa-map-marker"></i> 대구광역시 수성구 황금동 600-2</p>
+            <ul class="list-inline social-link">
+              <li><a href="TEL:053-531-3955"><i class="fa fa-phone"></i></a></li>
+              <a id="navi" href="#" onclick="navi();"><i class="fa fa-arrow-circle-up"></i></a>
+            </ul>
+
+            <p>Copyright @ INOCAR - Designed by INHO</p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class='embed-container maps'>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.003797489245!2d128.53602789194585!3d35.87123250980828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9227c9115e9edc9!2z7KSR7JWZ66qo7YSw7IqkKOyjvCk!5e0!3m2!1sko!2skr!4v1559797486516!5m2!1sko!2skr"width="100%" height="590px" frameborder="0" style="border: 0"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <footer>
+<nav id="menu" class="navbar-fixed-bottom hidden-xs">
+  <div class="container">
+    <div class="btn-group">
+      <ul class="nav navbar-nav">
+        <li><a href="BMW_320.html">3 series</a></li>
+        <li><a href="BMW_520.html">5 series</a></li>
+        <li><a href="BMW_720.html">7 series</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  </footer>
+  <!-- Footer -->
+
+<!-- Google Map -->
+<script>
+  $('.maps').click(function () {
+  $('.maps iframe').css("pointer-events", "auto");
+});
+
+$( ".maps" ).mouseleave(function() {
+  $('.maps iframe').css("pointer-events", "none");
+});
+</script>
+</body>
+</html>

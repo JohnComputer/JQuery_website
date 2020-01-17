@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Benz</title>
+	 <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <!-- 폰트어썸 CSS -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+  <!-- 파비콘 오류 -->
+  <link rel="shortcut icon" href="#">
+
+	<!-- jQuery Plugin -->
+  <script src="js/jquery.min.js"></script>
+  <script src='js/jquery.backTop.min.js'></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- jqPlot 기본 라이브러리 파일 -->
+  <link rel="stylesheet" href="jqplot/jquery.jqplot.min.css"/>
+  <script src="jqplot/jquery.jqplot.min.js"></script>
+
+  <!-- jqplot -->
+  <!-- <script type="text/javascript" src="jqplot/jquery.jqplot.js"></script> -->
+  <script src="jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script src="jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+  <!-- 카카오네비 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <!-- Back Top / ajax -->
+  <script>
+   $(document).ready(function() {
+     $('#backTop').backTop({
+       'position' : 1200,
+       'speed' : 500,
+       'color' : 'orange',
+     });
+   });
+   $.ajax({
+       url: "car_json.json",
+       type: 'get',
+       dataType: 'json',
+       timeout: 1000,
+       success: function(data) {
+           eighteen = data.Root.Row[2]["eighteen"];
+           sixteen = data.Root.Row[2]["sixteen"];
+           fourteen = data.Root.Row[2]["fourteen"];
+           twenteen = data.Root.Row[2]["twenteen"];
+           ten = data.Root.Row[2]["ten"];
+           model = data.Root.Row[2]["모델명"];
+           displace = data.Root.Row[2]["배기량"];
+           engine = data.Root.Row[2]["엔진형식"];
+           zero = data.Root.Row[2]["제로백"];
+           maximum = data.Root.Row[2]["최대출력"];
+           fuel = data.Root.Row[2]["연비"];
+
+          $("div#carform").append(
+            "<p>모델 :"+model+"</br>"
+            +"배기량 :"+displace+"</br>"
+            +"엔진형식 :"+engine+"</br>"
+            +"제로백 :"+zero+"</br>"
+            +"최대출력 :"+maximum+"</br>"
+            +"연비 :"+fuel+"</br>"
+            +"</p>");
+
+         var line1 = [[2018, eighteen/100, null], [2016, sixteen/100, null], [2014, fourteen/100,null],
+             [2012, twenteen/100, null ], [2010, ten/100, null]];
+         var plot2 = $.jqplot('chart2', [line1], {
+           title: '중고차 시세 단위 (백만)',
+           seriesDefaults: {
+             showMarker:true,
+             pointLabels:{ show:true, location:'s', ypadding:3 }
+           },
+           axes:{ yaxis:{ pad: 1.3 } }
+         });
+       },
+       error: function(jqXHR, textStatus, errorThrow){
+           alert("error");
+       }
+   });
+  </script>
+  <!-- 카카오 네비 -->
+  <script type='text/javascript'>
+    //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('3f50f7681c18fb212509fc8c75442500');
+      // 카카오 로그인 버튼을 생성합니다.
+      // 아직 임시 개발 단계여서 도메인 등록과 아이디 등록이 되어있진 않아서 사용은 불가능 연결만 가능
+      function navi(){
+          Kakao.Navi.start({
+              name: "중앙모터스",
+              x: 128.537987,
+              y: 35.871595,
+              coordType: 'wgs84'
+          });
+      }
+    //]]>
+  </script>
+</head>
+
+<body>
+  <!-- /////////////////////////////////////////Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+
+        </button>
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" class="hidden-xs" alt="">
+          <h3 class="visible-xs">INOCAR</h3>
+          <!-- 스마트폰 이면 h3스타일먹힌 INOCAR 로 나옴 -->
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a class="page-scroll" href="index.html">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BENZ<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BENZ_C.html">C class</a></li>
+              <li><a href="BENZ_E.html">E class</a></li>
+              <li><a href="BENZ_S.html">S class</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BMW<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BMW_320.html">3 series</a></li>
+              <li><a href="BMW_520.html">5 series</a></li>
+              <li><a href="BMW_720.html">7 series</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUDI<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="AUDI_A4.html">A4</a></li>
+              <li><a href="AUDI_A6.html">A6</a></li>
+              <li><a href="AUDI_A8.html">A8</a></li>
+            </ul>
+          </li>
+          <li>
+              <a class="page-scroll" href="gallery.html">Gallery</a>
+          </li>
+          <li>
+              <a class="page-scroll" href="Aboutme.html">About me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <header>
+		<div class="container text-center">
+			<a class="site-branding" href="BENZ_S.html">
+          <h1 class="site-title">
+            BENZ
+          </h1>
+          <p class="site-description">
+            S class
+          </p>
+			</a><!-- .site-branding -->
+		</div>
+  </header>
+
+  <a id='backTop'>Back to top</a>
+  <section class="box-content box-1 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6 fix-right">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_s1.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>인텔리전트 드라이브.</span>
+          </div>
+          <p>수없이 여행을 다녀 본 분께 다음 여행을 위해 필요한 건 무엇일까요? 앞일을 미리 내다보는
+              분을 깜짝 놀래 켜 드리려면 어떻게 해야 할까요? 언제나 앞장서서 사람들을 이끄는 분께는 어
+              떤 조언이 필요할까요? 진심 어린 관심, 존경과 감사의 마음. 한 분 한 분의 바람을 귀담아 듣
+              고 지금껏 경험하지 못했던 최고의 만족을 드리는 것. 시간의 흐름마저도 잠시 비껴가는 곳,
+              The New S-Class를 만끽하시기 바랍니다.</p>
+            <div class="heading">
+              <span>누구에게 보여주기 위한 것이 아닙니다.
+                The New S-Class에게는 당연한 일입니다.</span>
+            </div>
+            <p>자원 절약의 필요성, 언제나 개선의 여지는 있다는 것. 절약과 부는 서로 대립하는 개념이 아니라 오히려 서로를 보완하는
+            개념이라는 사실. 이런 당연한 것들처럼, The New S-Class가 최신형 엔진을 탑재했다는 사실 또한 특별히 설명할 필요가
+            없는 일이겠지요. 지상 최고의 지능형 기술을 갖춘 주행 보조 시스템을 탑재한 것도 당연하고요. The New S-Class에는 몸
+            과 마음을 사로잡을 감각적 자극들로 가득합니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <!-- ////////////Content Box 02 -->
+  <section class="box-content box-2 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_s2.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>도대체 어떻게 이렇게 만들었을까?</span>
+          </div>
+          <p>가끔 이런 궁금증이 생깁니다. The New S-Class만큼 스타일과 위상의 완벽한 균형을 보여주는 럭셔리 세단은 세상 어디에도 없습니다.
+          어느 것 하나도 빠져서는 안 될 세심한 라인과 남다른 디테일들이 The New S-Class의 강한 존재감을 드러냅니다. The New S-Class를
+          대면한 순간, 나도 모르게 이렇게 혼잣말을 하게 됩니다. “도대체 어떻게 이렇게 만들었을까?”</p>
+            <div class="heading">
+              <span>시간도 잠시 멈춰가는 곳.</span>
+            </div>
+            <p>세상을 좀 더 빨리 움직이기 위해 수많은 기술이 개발되고 있습니다. 하지만 The New S-Class는 시간의 흐름을 잠
+            시 잊고 쉬어갈 수 있는 다양한 편의 장치와 옵션들이 준비되어 있습니다. 선택사양인 ENERGIZING 컴포트 컨트롤
+            은 총 6가지 프로그램으로 구성되어 색상, 소리, 빛, 향기와 시트 마사지 기능까지 스스로 지능적으로 조합해냅니다.
+            The New S-Class는 상황에 따라 운전자에게 새로운 활력을 불어넣기도 하고, 때론 긴장을 풀 수 있게 도와줍니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <!-- ////////////Content Box 03 -->
+  <section class="box-content box-3 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6 fix-right">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_s3.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text" id="chart2" width="100%" height="590px" frameborder="0" style="border: 0">
+
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+<!-- BOX 4 -->
+  <section class="box-content box-4 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_s4.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>차량 제원</br>CAR specification</span>
+          </div>
+          <div id="carform">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <div class="under">
+    <div class="wrap-footer">
+      <div class="no-gutter">
+        <div class="col-md-4">
+          <div class="box-text">
+            <div class="footer-heading">
+              <h2>Contacts</h2>
+            </div>
+            <p><i class="fa fa-building-o"></i>중앙모터스</p>
+            <p><i class="fa fa-phone"></i>053-551-3955</p>
+            <p><i class="fa fa-map-marker"></i> 대구광역시 서구 이현동 42-434</p>
+            <ul class="list-inline social-link">
+              <li><a href="TEL:053-531-3955"><i class="fa fa-phone"></i></a></li>
+              <a id="navi" href="#" onclick="navi();"><i class="fa fa-arrow-circle-up"></i></a>
+            </ul>
+
+            <p>Copyright @ INOCAR - Designed by INHO</p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class='embed-container maps'>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.003797489245!2d128.53602789194585!3d35.87123250980828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9227c9115e9edc9!2z7KSR7JWZ66qo7YSw7IqkKOyjvCk!5e0!3m2!1sko!2skr!4v1559797486516!5m2!1sko!2skr"width="100%" height="590px" frameborder="0" style="border: 0"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <footer>
+<nav id="menu" class="navbar-fixed-bottom hidden-xs">
+  <div class="container">
+    <div class="btn-group">
+      <ul class="nav navbar-nav">
+        <li><a href="BENZ_C.html">C class</a></li>
+        <li><a href="BENZ_E.html">E class</a></li>
+        <li><a href="BENZ_S.html">S class</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  </footer>
+  <!-- Footer -->
+
+<!-- Google Map -->
+<script>
+  $('.maps').click(function () {
+  $('.maps iframe').css("pointer-events", "auto");
+});
+
+$( ".maps" ).mouseleave(function() {
+  $('.maps iframe').css("pointer-events", "none");
+});
+</script>
+</body>
+</html>

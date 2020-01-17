@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!--  인터넷 익스플로러 엣지  -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--  뷰포트 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>INOCAR</title>
+
+	 <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+	<!-- jQuery Plugin -->
+	<script src="js/jquery.min.js"></script>
+  <script src='js/jquery.backTop.min.js'></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- 카카오네비 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+  <!-- Back Top -->
+   <script>
+    $(document).ready(function() {
+      $('#backTop').backTop({
+        'position' : 1200,
+        'speed' : 500,
+        'color' : 'orange',
+      });
+    });
+   </script>
+   <!-- 카카오 네비 -->
+   <script type='text/javascript'>
+     //<![CDATA[
+       // 사용할 앱의 JavaScript 키를 설정해 주세요.
+       Kakao.init('3f50f7681c18fb212509fc8c75442500');
+       // 카카오 로그인 버튼을 생성합니다.
+       // 아직 임시 개발 단계여서 도메인 등록과 아이디 등록이 되어있진 않아서 사용은 불가능 연결만 가능
+       // function navi(){
+       //     Kakao.Navi.start({
+       //         name: "INOCAR",
+       //         x: #,
+       //         y: #,
+       //         coordType: '#'
+       //     });
+       // }
+     //]]>
+   </script>
+</head>
+<body>
+
+	<!-- /////////////////////////////////////////Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+
+				</button>
+				<a class="navbar-brand" href="#">
+					<img src="images/logo.png" class="hidden-xs" alt="">
+					<h3 class="visible-xs">INOCAR</h3>
+          <!-- 스마트폰 이면 h3스타일먹힌 INOCAR 로 나옴 -->
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+              <a class="page-scroll" href="index.html">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BENZ<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BENZ_C.html">C class</a></li>
+              <li><a href="BENZ_E.html">E class</a></li>
+              <li><a href="BENZ_S.html">S class</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BMW<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BMW_320.html">3 series</a></li>
+              <li><a href="BMW_520.html">5 series</a></li>
+              <li><a href="BMW_720.html">7 series</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUDI<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="AUDI_A4.html">A4</a></li>
+              <li><a href="AUDI_A6.html">A6</a></li>
+              <li><a href="AUDI_A8.html">A8</a></li>
+            </ul>
+          </li>
+          <li>
+              <a class="page-scroll" href="gallery.html">Gallery</a>
+          </li>
+          <li>
+              <a class="page-scroll" href="Aboutme.html">About me</a>
+          </li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<header>
+		<!-- Carousel -->
+    	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+			  	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+			    <div class="item active">
+			    	<img src="images/BENZ_1400.jpg" alt="First slide">
+                    <div class="header-text">
+                        <div class="col-md-12 text-center">
+                          <!-- 구글 API 참고해서 들고옴(josefin). uppercase 적용 대문자로 출력 -->
+                            <h2>BENZ</h2>
+                            <br>
+                            <h3>THE BEST OR NOTHING</h3>
+                            <h4>- 최고가 아니면 만들지 않는다 -</h4>
+                            <br>
+                        </div>
+                    </div>
+			    </div>
+			    <div class="item">
+			    	<img src="images/BMW_1400.jpg" alt="Second slide">
+                    <div class="header-text">
+                        <div class="col-md-12 text-center">
+                          <h2>BMW</h2>
+                          <br>
+                          <h3>Sheer Driving Pleasure</h3>
+                          <h4>- 진정한 운전의 즐거움 -</h4>
+                          <br>
+                        </div>
+                    </div>
+			    </div>
+			    <div class="item">
+			    	<img src="images/AUDI_1400.jpg" alt="Third slide">
+			    	<!-- Static Header -->
+                    <div class="header-text">
+                        <div class="col-md-12 text-center">
+                          <h2>AUDI</h2>
+                          <br>
+                          <h3>Vorsprung durch Technik</h3>
+                          <h4>- 기술을 통한 진보 -</h4>
+                          <br>
+                        </div>
+                    </div><!-- /header-text -->
+			    </div>
+			</div>
+			<!-- 슬라이드쇼 Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+		    	<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+		    	<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+    <!-- /carousel -->
+	</header>
+	<!-- Header -->
+
+<a id='backTop'>Back to top</a>
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content" class="index-page">
+
+		<!-- ////////////Content Box 01 -->
+		<section class="box-content box-1 box-bg-black">
+      <!-- css파일에 노마진 -->
+			<div class="no-gutter">
+				<div class="col-sm-6 fix-left">
+					<div class="box-image">
+						<img class="media__image" src="images/main_1.jpg">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="box-text">
+						<div class="heading">
+							<h2>welcome</h2>
+							<span>CHOOSE AND FIND<br>YOUR DREAM CAR</span>
+						</div>
+						<p>누구나 차를 사기전에 수많은 고민을 하고 차를 구매하지만 <br>
+              수많은 정보속에서 자신이 원하는 정보를 찾기란 어렵습니다. <br>
+              "차량의 가격은 얼마일까?" "우리집에서 가까운곳에 서비스센터는 있을까?" "디자인은 어떠한가?"<br>
+              필요한 정보만을 모아서 보다 보기 쉽고 편리하게 찾을 수 있는 당신만의 파트너 사이트입니다.</p>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</section>
+		<!-- ////////////Content Box 02 -->
+		<section class="box-content box-2">
+			<div class="no-gutter">
+				<div class="col-lg-4 col-sm-6">
+					<a href="#" class="portfolio-box">
+						<img src="images/BENZ_port.jpg" class="img-responsive" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									Mercedes-Benz
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a href="#" class="portfolio-box">
+						<img src="images/BMW_port.jpg" class="img-responsive" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									BMW
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a href="#" class="portfolio-box">
+						<img src="images/AUDI_port.jpg" class="img-responsive" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									AUDI
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a href="gallery.html" class="portfolio-box">
+						<img src="images/HYUNDAI_port.jpg" class="img-responsive" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									GALLERY
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a href="Aboutme.html" class="portfolio-box">
+						<img src="images/9.jpg" class="img-responsive" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									Aboutme
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-sm-6">
+					<a href="#" class="portfolio-box">
+						<img src="images/10.jpg" class="img-responsive" alt="">
+						<div class="portfolio-box-caption">
+							<div class="portfolio-box-caption-content">
+								<div class="project-category text-faded">
+									Preparing
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</section>
+	</div>
+
+	<footer>
+		<div class="wrap-footer">
+			<div class="no-gutter">
+				<div class="col-md-4">
+					<div class="box-text">
+						<div class="footer-heading">
+							<h2>Contacts</h2>
+						</div>
+          	<p><i class="fa fa-building-o"></i></p>
+            <p><i class="fa fa-user-md"></i></p>
+						<p><i class="fa fa-phone"></i></p>
+						<p><i class="fa fa-envelope-o"></i></p>
+            <p><i class="fa fa-map-marker"></i></p>
+						<ul class="list-inline social-link">
+							<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-phone"></i></a></li>
+              <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
+              <a id="navi" href="#" onclick="navi();"><i class="fa fa-arrow-circle-up"></i></a>
+						</ul>
+						<p>Copyright @ INOCAR - Designed by INHO</p>
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class='embed-container maps'>
+            <iframe src="#"></iframe>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</footer>
+	<!-- Footer -->
+
+	<!-- 구글지도 -->
+	<script>
+		$('.maps').click(function () {
+		$('.maps iframe').css("pointer-events", "auto");
+	});
+
+	$( ".maps" ).mouseleave(function() {
+	  $('.maps iframe').css("pointer-events", "none");
+	});
+	</script>
+</body>
+</html>

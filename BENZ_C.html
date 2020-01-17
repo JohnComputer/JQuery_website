@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Benz</title>
+	 <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <!-- 폰트어썸 CSS -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+  <!-- 파비콘 오류 -->
+  <link rel="shortcut icon" href="#">
+
+	<!-- jQuery Plugin -->
+  <script src="js/jquery.min.js"></script>
+  <script src='js/jquery.backTop.min.js'></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- jqPlot 기본 라이브러리 파일 -->
+  <link rel="stylesheet" href="jqplot/jquery.jqplot.min.css"/>
+  <script src="jqplot/jquery.jqplot.min.js"></script>
+
+  <!-- jqplot -->
+  <!-- <script type="text/javascript" src="jqplot/jquery.jqplot.js"></script> -->
+  <script src="jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+  <script src="jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+
+  <!-- 카카오네비 -->
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <!-- Back Top / ajax -->
+  <script>
+   $(document).ready(function() {
+     $('#backTop').backTop({
+       'position' : 1200,
+       'speed' : 500,
+       'color' : 'orange',
+     });
+   });
+   $.ajax({
+       url: "car_json.json",
+       type: 'get',
+       dataType: 'json',
+       timeout: 1000,
+       success: function(data) {
+
+           eighteen = data.Root.Row[0]["eighteen"];
+           sixteen = data.Root.Row[0]["sixteen"];
+           fourteen = data.Root.Row[0]["fourteen"];
+           twenteen = data.Root.Row[0]["twenteen"];
+           ten = data.Root.Row[0]["ten"];
+           model = data.Root.Row[0]["모델명"];
+           displace = data.Root.Row[0]["배기량"];
+           engine = data.Root.Row[0]["엔진형식"];
+           zero = data.Root.Row[0]["제로백"];
+           maximum = data.Root.Row[0]["최대출력"];
+           fuel = data.Root.Row[0]["연비"];
+
+          $("div#carform").append(
+            "<p>모델 :"+model+"</br>"
+            +"배기량 :"+displace+"</br>"
+            +"엔진형식 :"+engine+"</br>"
+            +"제로백 :"+zero+"</br>"
+            +"최대출력 :"+maximum+"</br>"
+            +"연비 :"+fuel+"</br>"
+            +"</p>");
+
+         var line1 = [[2018, eighteen/100, null], [2016, sixteen/100, null], [2014, fourteen/100,null],
+             [2012, twenteen/100, null ], [2010, ten/100, null]];
+         var plot2 = $.jqplot('chart2', [line1], {
+           title: '중고차 시세 단위 (백만)',
+           seriesDefaults: {
+             showMarker:true,
+             pointLabels:{ show:true, location:'s', ypadding:3 }
+           },
+           axes:{ yaxis:{ pad: 1.3 } }
+         });
+       },
+       error: function(jqXHR, textStatus, errorThrow){
+           alert("error");
+       }
+   });
+  </script>
+  <!-- 카카오 네비 -->
+  <script type='text/javascript'>
+    //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('3f50f7681c18fb212509fc8c75442500');
+      // 카카오 로그인 버튼을 생성합니다.
+      // 아직 임시 개발 단계여서 도메인 등록과 아이디 등록이 되어있진 않아서 사용은 불가능 연결만 가능
+      function navi(){
+          Kakao.Navi.start({
+              name: "중앙모터스",
+              x: 128.537987,
+              y: 35.871595,
+              coordType: 'wgs84'
+          });
+      }
+    //]]>
+  </script>
+</head>
+
+<body>
+  <!-- /////////////////////////////////////////Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+
+        </button>
+        <a class="navbar-brand" href="index.html">
+          <img src="images/logo.png" class="hidden-xs" alt="">
+          <h3 class="visible-xs">INOCAR</h3>
+          <!-- 스마트폰 이면 h3스타일먹힌 INOCAR 로 나옴 -->
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+              <a class="page-scroll" href="index.html">Home</a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BENZ<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BENZ_C.html">C class</a></li>
+              <li><a href="BENZ_E.html">E class</a></li>
+              <li><a href="BENZ_S.html">S class</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">BMW<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="BMW_320.html">3 series</a></li>
+              <li><a href="BMW_520.html">5 series</a></li>
+              <li><a href="BMW_720.html">7 series</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUDI<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="ADUI_A4.html">A4</a></li>
+              <li><a href="AUDI_A6.html">A6</a></li>
+              <li><a href="AUDI_A8.html">A8</a></li>
+            </ul>
+          </li>
+          <li>
+              <a class="page-scroll" href="gallery.html">Gallery</a>
+          </li>
+          <li>
+              <a class="page-scroll" href="Aboutme.html">About me</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <header>
+		<div class="container text-center">
+			<a class="site-branding" href="BENZ_C.html">
+          <h1 class="site-title">
+            BENZ
+          </h1>
+          <p class="site-description">
+            C class
+          </p>
+			</a><!-- .site-branding -->
+		</div>
+  </header>
+
+  <a id='backTop'>Back to top</a>
+  <section class="box-content box-1 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6 fix-right">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_c2.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>멈추지 않는 진화</span>
+          </div>
+          <p>다른 사람에 비해 얼마나 더 낫느냐가 아니라 현재의 자신보다 얼마나 더 발전하느냐가 중요합니다. 스포츠나
+            도로에서도 마찬가지입니다. C-Class는 완벽한 비율, 편안함, 품질, 뛰어난 드라이빙 감각으로 이미 잘 알려져
+            있습니다. 매일 운행할 때마다 끊임없이 스스로를 넘어서는 것이야말로 The New C-Class만의 진면모입니다.</p>
+            <div class="heading">
+              <span>가장 중요한 때 최상의 모습으로</span>
+            </div>
+            <p>The New C-Class의 확실한 차이는 놀라운 추진력입니다. 새로워진 앞 모습은 역동적이면서도 현대적인 자태를
+              마음껏 자랑합니다. 세부 사양으로 신형 범퍼, 반짝거리는 크롬 트림, 눈부신 최신 LED 전조등을 갖추고 있습니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <!-- ////////////Content Box 02 -->
+  <section class="box-content box-2 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_c1.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>모든 것이 완벽해 보일 때 목표는 단 한 가지 <br> 완벽을 넘어서다</span>
+          </div>
+          <p>The New C-Class에서는 완벽한 훈련 조건이 당신을 기다리고 있습니다. 세부 사양에 따라 제작된 터치 컨트롤 버튼이 장착된
+            스티어링 휠, 디지털 인스트루먼트, 최신 멀티 미디어 시스템을 갖춘 대형 디스플레이 등의 첨단 기능을 주행과 동시에 경험할 수 있습니다.</p>
+            <div class="heading">
+              <span>스포티함을 세련되게 재정의하다</span>
+            </div>
+            <p>The New C-Class 디자인의 감각적인 순수함은 보는 것만으로도 운전의 기쁨을 느끼게 해 줍니다. 그 감각적인 순수함은
+              벤츠의 디자이너들로 하여금 그것을 더욱 최적화시키도록 동기를 부여했습니다. 새로운 조명 시스템, 최신 감각의
+              에이프런, 게다가 새로운 색상과 재질은 C-Class만이 보여주는 역동적이면서도 현대적인 자태를 더욱 돋보이게 해 줍니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <!-- ////////////Content Box 03 -->
+  <section class="box-content box-3 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6 fix-right">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_c3.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!-- jqplot 들어감  -->
+        <div class="box-text" id="chart2" width="100%" height="590px" frameborder="0" style="border: 0"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <section class="box-content box-4 box-bg-black">
+    <div class="no-gutter">
+      <div class="col-sm-6">
+        <div class="box-image">
+          <img class="media__image " src="images/benz_900_c4.jpg">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="box-text">
+          <div class="heading">
+            <span>차량 제원</br>CAR specification</span>
+          </div>
+          <div id="carform">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </section>
+
+  <div class="under">
+    <div class="wrap-footer">
+      <div class="no-gutter">
+        <div class="col-md-4">
+          <div class="box-text">
+            <div class="footer-heading">
+              <h2>Contacts</h2>
+            </div>
+            <p><i class="fa fa-building-o"></i>중앙모터스</p>
+            <p><i class="fa fa-phone"></i>053-551-3955</p>
+            <p><i class="fa fa-map-marker"></i> 대구광역시 서구 이현동 42-434</p>
+            <ul class="list-inline social-link">
+              <li><a href="TEL:053-531-3955"><i class="fa fa-phone"></i></a></li>
+              <a id="navi" href="#" onclick="navi();"><i class="fa fa-arrow-circle-up"></i></a>
+            </ul>
+
+            <p>Copyright @ INOCAR - Designed by INHO</p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class='embed-container maps'>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3073.003797489245!2d128.53602789194585!3d35.87123250980828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9227c9115e9edc9!2z7KSR7JWZ66qo7YSw7IqkKOyjvCk!5e0!3m2!1sko!2skr!4v1559797486516!5m2!1sko!2skr"width="100%" height="590px" frameborder="0" style="border: 0"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <footer>
+<nav id="menu" class="navbar-fixed-bottom hidden-xs">
+  <div class="container">
+    <div class="btn-group">
+      <ul class="nav navbar-nav">
+        <li><a href="BENZ_C.html">C class</a></li>
+        <li><a href="BENZ_E.html">E class</a></li>
+        <li><a href="BENZ_S.html">S class</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  </footer>
+  <!-- Footer -->
+
+<!-- Google Map -->
+<script>
+  $('.maps').click(function () {
+  $('.maps iframe').css("pointer-events", "auto");
+});
+
+$( ".maps" ).mouseleave(function() {
+  $('.maps iframe').css("pointer-events", "none");
+});
+</script>
+</body>
+</html>
